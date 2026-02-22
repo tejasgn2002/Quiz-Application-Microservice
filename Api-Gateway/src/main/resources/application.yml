@@ -1,0 +1,16 @@
+server:
+  port: 8765
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: QUESTION-SERVICE
+          uri: http://localhost:8088
+          predicates:
+            - Path=/question/**
+
+        - id: QUIZ-SERVICE
+          uri: http://localhost:8086
+          predicates:
+            - Path=/quiz/**
